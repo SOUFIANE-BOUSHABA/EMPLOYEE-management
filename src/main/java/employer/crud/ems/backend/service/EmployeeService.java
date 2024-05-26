@@ -5,4 +5,6 @@ import employer.crud.ems.backend.dto.EmployeeDto;
 public interface EmployeeService {
 
     EmployeeDto creaEmployeeDto(EmployeeDto employeeDto);
+
+    EmployeeDto getEmployeeById(Long id);
 }
