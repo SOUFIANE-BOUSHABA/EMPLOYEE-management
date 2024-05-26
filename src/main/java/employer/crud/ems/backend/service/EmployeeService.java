@@ -12,5 +12,5 @@ public interface EmployeeService {
 
     List<EmployeeDto> getAllEmployees();
 
-  
+
 }
