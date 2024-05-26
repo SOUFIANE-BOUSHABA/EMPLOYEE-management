@@ -10,11 +10,14 @@ import employer.crud.ems.backend.service.EmployeeService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import org.springframework.web.bind.annotation.PutMapping;
+
 
 
 
@@ -47,4 +50,24 @@ public class EmployeeController {
         List<EmployeeDto> employeeDtoList = employeeService.getAllEmployees();
         return new ResponseEntity<>(employeeDtoList, HttpStatus.OK);
     }
+
+ 
+    // api update employee
+    @PutMapping("{id}")
+    public ResponseEntity<EmployeeDto> updateEmployee(@PathVariable("id") Long employeeId, @RequestBody EmployeeDto updateEmployeeDto) {
+        EmployeeDto employeeDto = employeeService.updateEmployee(employeeId, updateEmployeeDto);
+        return new ResponseEntity<>(employeeDto, HttpStatus.OK);
+    }
+
+
+       
+    // api delete employee
+    @DeleteMapping("{id}")
+   
+    public ResponseEntity<String> deleteEmployee(@PathVariable("id") Long employeeId) {
+        employeeService.deleteEmployee(employeeId);
+        return  ResponseEntity.ok("Employee deleted successfully");
+    }
+
+    
 }
