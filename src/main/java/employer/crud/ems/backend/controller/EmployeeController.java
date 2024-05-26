@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
 
 
 
@@ -38,5 +39,12 @@ public class EmployeeController {
     public ResponseEntity<EmployeeDto> getEmployeeById(@PathVariable("id") Long employeeId) {
         EmployeeDto employeeDto = employeeService.getEmployeeById(employeeId);
         return new ResponseEntity<>(employeeDto, HttpStatus.OK);
+    }
+
+    // api get all employees
+    @GetMapping
+    public ResponseEntity<List<EmployeeDto>>getAllEmployees() {
+        List<EmployeeDto> employeeDtoList = employeeService.getAllEmployees();
+        return new ResponseEntity<>(employeeDtoList, HttpStatus.OK);
     }
 }
